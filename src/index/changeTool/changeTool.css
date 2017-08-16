@@ -1,0 +1,55 @@
+.clock{
+	position: absolute;
+	left: 340px;
+	top:600px;
+	
+}
+.clock h1{
+	color: #fff;
+	font-size: 80px;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+.clock h2{
+	color: #fff;
+	font-size: 30px;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+.famous{
+	position: absolute;
+	left: 330px;
+	top:760px;
+	color: #fff;
+	font-size: 16px;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	width: 480px;
+	line-height: 1.4;
+	word-break: break-all;
+	cursor: default;
+	padding: 16px;
+	border-radius: 16px;
+	transition: all .2s linear;
+}
+.famous:hover{
+	background: rgba(255,255,255,.2)
+}
+.theme-change{
+	position: absolute;
+	left: 350px;
+	top:880px;
+	cursor: pointer;
+}
+.theme-change .icon-change-theme{
+	font-size: 18px;
+	opacity: .8;
+}
+.theme-change span,.theme-change .icon-change-theme{
+	vertical-align: middle;
+	opacity: .8;
+
+}
+.theme-change:hover span{
+	opacity: 1;
+}
+.theme-change:hover .icon-change-theme{
+	opacity: 1;
+}

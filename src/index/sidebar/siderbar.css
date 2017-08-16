@@ -1,0 +1,89 @@
+.sidebar-bg{
+	background: rgba(0,0,0,0.3);
+	height:100vh;
+	width: 280px;
+	display: flex;
+	align-content: center;
+	padding: 16px;
+	box-sizing: border-box;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+	z-index: 100;
+}
+.logo{
+	font-family: AvenirWindows, "Segoe UI", Arial, sans-serif;
+	color: #fff;
+	font-size: 38px;
+	font-style: italic;
+	text-align: center;
+	
+}
+.logo>i{
+	color: #01DFF0;
+}
+.projects{
+	margin-top: 20px;
+	position: relative;
+	color: #fff;
+	font-family: AvenirWindows, "Segoe UI", Arial;
+	cursor: default;
+}
+
+.projects:hover .icon-jiantou-copy{
+	display: inline-block;
+}
+.projects>div{
+	font-size: 20px;
+	display: inline-block;
+	margin-right: 6px;
+	vertical-align: center;
+}
+.projects>.icon-jiantou-copy {
+	font-size: 8px !important;
+	vertical-align: center;
+	display: none;	
+}
+	
+
+.list li {
+	height: 60px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	cursor: pointer;
+}
+.list li:hover .icon2{
+	display: inline-block;
+}
+svg{
+	width: 38px;
+	vertical-align: center;
+	margin-right: 18px;
+	
+}
+.icon{
+	font-size: 36px;
+}
+.icon2{
+	display: none;
+}
+li div{
+	font-size: 20px;
+	color: #fff;
+	position: relative;
+	top:-2px;
+	margin-right: 90px;
+	
+}
+.add{
+	cursor: pointer;
+}
+.icon-add{
+	font-size: 40px;
+}
+.icon-add,span{
+	vertical-align: middle;
+	color: #fff;
+}
