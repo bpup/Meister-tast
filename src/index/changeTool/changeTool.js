@@ -105,6 +105,7 @@ class Gettime extends React.Component{
 		   const visible=this.state.visible;
 		   return <div className="theme-change" onClick={this.changeVisible}>
 					 <Popup on="click"
+					       className="popup-warp"
 						   offset="0"
 						   position="top center"
 				   trigger={ <Icon size="large" className="icon" name='setting' color="#fff" />}

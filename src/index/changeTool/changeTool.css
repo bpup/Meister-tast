@@ -1,12 +1,13 @@
 .clock{
 	position: absolute;
 	left: 340px;
-	top:600px;
+	top:60%;
 	
 }
 .clock h1{
 	color: #fff;
 	font-size: 80px;
+	margin: 0 !important;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
 .clock h2{
@@ -17,7 +18,7 @@
 .famous{
 	position: absolute;
 	left: 330px;
-	top:760px;
+	top:76%;
 	color: #fff;
 	font-size: 16px;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.3);
@@ -37,7 +38,7 @@
 .theme-change{
 	position: absolute;
 	left: 350px;
-	top:880px;
+	top:95%;
 	cursor: pointer;
 	z-index: 9000;
 }
@@ -66,16 +67,19 @@
 }
 
 .card-group{
+	height: 100%;
+	position: relative;
 	width: 280px;
 	align-content: flex-start !important;
 }
 .card-warp{
 	display: flex;
 	flex-direction: column;
+	height: 60%;
 }
 .card{
-	height: 56px;
-	margin: 8px !important;
+	height: 50px;
+	margin: 6px 8px !important;
 	margin-top:-100px;
 }
 .card-group {
@@ -124,57 +128,62 @@
 }
 .cardimg1{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/1.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .cardimg2{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/2.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .cardimg3{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/3.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .cardimg4{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/4.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .cardimg5{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/5.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .cardimg6{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/6.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .cardimg7{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/7.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .cardimg8{
 	width: 120px;
-	height: 96px;
+	height: 90px;
 	background: url(../../bgimages/8.jpg) no-repeat !important;
 	background-size: cover !important;
 }
 .card-warp h5{
+	margin: 0 0 0 10px!important;
+	font-size: 14px!important;
 	position: relative;
 	top:-10px;
   }
   .card-group~h5{
 	  position: relative;
 	  top:10px;
+  }
+  .popup-warp{
+	  padding: 16px;
   }
