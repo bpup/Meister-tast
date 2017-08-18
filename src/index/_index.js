@@ -1,18 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './bgcss.css'
-const bgarr=['default'];
-const bgbox='bgbox'
+let bgclass=null
 class Bg extends React.Component{
 	constructor(props){
 		super(props)
-		this.state={
-			bg:bgarr[0]
+	
+	}
+	componentWillReceiveProps(nextProps){
+		if(this.props.themeIndex!=nextProps.themeIndex){
+			bgclass='bgbox  '+'theme'+nextProps.themeIndex			
+		}
+		if(this.props.themeImgIndex!=nextProps.themeImgIndex){
+			bgclass='bgbox '+'themeimg'+nextProps.themeImgIndex			
 		}
 	}
-
+	
 	render(){
-		return <div className={this.state.bg+" "+bgbox}>
+	
+	    const bgclass1='bgbox '+bgclass
+		return <div className={bgclass1}>
 					
 				</div>
 				

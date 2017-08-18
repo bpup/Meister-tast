@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment'
 import './changeTool.css'
+import { Icon, Popup, Button,Card,Header } from 'semantic-ui-react'
 const famous=[
 	'理想是指路明灯。没有理想，就没有坚定的方向；而没有方向，就没有生活。——列夫·托尔斯泰',
 	'世界上最快乐的事，莫过于为理想而奋斗。——苏格拉底',
@@ -21,6 +22,7 @@ const famous=[
 	'I have nothing to offer but blood, toil tears and sweat. – Winston Churchill',
 	'Patience is bitter, but its fruit is sweet. –Jean Jacques Rousseau',
 ]
+
 const visitor='Visitor';
 class Gettime extends React.Component{
 	constructor(props){
@@ -46,7 +48,7 @@ class Gettime extends React.Component{
 		if (local< 12) {
 						this.setState({nowloacl:"Good Morning"});
 		} else if (local>= 12 && local < 18) {
-						this.setState({nowloacl:"Good Afternoom "});
+						this.setState({nowloacl:"Good Afternoon "});
 		} else {
 	
 						this.setState({nowloacl: "Good Evening "});
@@ -64,7 +66,7 @@ class Gettime extends React.Component{
    class Famous extends React.Component{
 	   constructor(props){
 		   super(props)
-
+		   
 	   }
 	   render(){
 		   return <div className="famous">{famous[parseInt(Math.random()*famous.length)]}</div>
@@ -73,16 +75,70 @@ class Gettime extends React.Component{
    class ThemeChange extends React.Component{
 	   constructor(props){
 		   super(props)
+		   this.changeVisible=this.changeVisible.bind(this)
+		   this.handleClick = this.handleClick.bind(this)
+		   this.handleClickImg = this.handleClickImg.bind(this)
+		   this.state={
+			visible:false,
+		}
+	   }
+	  
+	   changeVisible(){
+			this.setState((state,props)=>{return {visible:!state.visible}})   //立即更新state
+					
+			
+	   }
+	   handleClick(e){
+		   let re=/\d{1,2}$/g
+           this.props.themeIndex(parseInt(e.target.classList.toString().match(re)))
 
 	   }
+	   handleClickImg(e){
+		   this.props.themeImgIndex(parseInt(e.target.classList.toString().split(' ')[4].substr(-1,1)))		
+	   }
+			
+		   
+		   
 	   render(){
-		   return <div className="theme-change">
-			   <svg className="icon icon-change-theme" aria-hidden="true">
-    							<use href='#icon-zhuti'></use>
-							</svg>
+		   const len=[1,2,3,4,5,6,7,8,9,10,11,12];
+		   const len1=[1,2,3,4,5,6,7,8]
+		   const visible=this.state.visible;
+		   return <div className="theme-change" onClick={this.changeVisible}>
+					 <Popup on="click"
+						   offset="0"
+						   position="top center"
+				   trigger={ <Icon size="large" className="icon" name='setting' color="#fff" />}
+				   content={<div className="card-warp">
+							<Header as='h3' dividing>Background</Header>
+							<Header as='h5' color="grey">Colors</Header>
+							<Card.Group className="card-group" itemsPerRow={3}>
+							{len.map((e)=>{
+								const classCarts='card'+e
+								const key=e.toString()
+								return <Card raised link className={classCarts} onClick={this.handleClick} key={key}/>
+								})}
+							</Card.Group>
+							<Header as='h5' color="grey">Photos</Header>
+							<Card.Group className="card-group1" itemsPerRow={2}>
+							{len1.map((e)=>{
+								const classCarts='cardimg'+e
+								const key=e.toString()
+								return <Card raised link className={classCarts} onClick={this.handleClickImg} key={key}/>
+								})}
+							</Card.Group>	
+							</div>}
+			/>
+						
+					
 						<span>Minty</span>
+
 		   </div>
 	   }
    }
-export default {Gettime,Famous,ThemeChange}
 
+   
+	   
+	   
+
+
+export default {Gettime,Famous,ThemeChange}
