@@ -1,25 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {Route,Link ,  BrowserRouter as Router, } from 'react-router-dom'
 import './signInTool.css'
-import { Icon ,Tab,Button,Label, Statistic,Popup,Card,Image} from 'semantic-ui-react'
+import { Icon ,Tab,Button,Label, Statistic,Popup,Card, Image} from 'semantic-ui-react'
 const src=[
-	'../../avatar/1.svg',
-	'../../avatar/2.svg',
-	'../../avatar/3.svg',
-	'../../avatar/4.svg',
-	'../../avatar/5.svg',
-	'../../avatar/6.svg',
-	'../../avatar/7.svg',
-	'../../avatar/8.svg',
-	'../../avatar/9.svg',
-	'../../avatar/10.svg',
-	'../../avatar/11.svg',
-	'../../avatar/12.svg',
-	'../../avatar/13.svg',
-	'../../avatar/14.svg',
-	'../../avatar/15.svg',
-	'../../avatar/16.svg',
-	'../../avatar/17.svg',
+	'/avatar/1.svg',
+	'/avatar/2.svg',
+	'/avatar/3.svg',
+	'/avatar/4.svg',
+	'/avatar/5.svg',
+	'/avatar/6.svg',
+	'/avatar/7.svg',
+	'/avatar/8.svg',
+	'/avatar/9.svg',
+	'/avatar/10.svg',
+	'/avatar/11.svg',
+	'/avatar/12.svg',
+	'/avatar/13.svg',
+	'/avatar/14.svg',
+	'/avatar/15.svg',
+	'/avatar/16.svg',
+	'/avatar/17.svg',
 ]
 const NAME='JOE'
 
@@ -44,27 +44,27 @@ const tab=<section className='section-tab'>
 			 </div></section>
          </section>
 const label= <Label as='a' color='blue' image className='user-entry'>
-<img src="./1.png" className="img-user"/>
-  Veronika
+<img src={src[0]} className="img-user"/>
+{NAME}
   <Label.Detail>Friend</Label.Detail>
 </Label>
 	  
-const content= <Card>
+const content= <Card className='clear-border'>
 <Card.Content>
-  <Image floated='center' size='large' avatar src='./avatar/1.png' />
+  <Image floated='center' size='large' avatar src={src[0]} />
   <Card.Header className="header-name">
 	{NAME}
   </Card.Header>
   <Card.Meta>
-	Friends of Elliot
+	you are alone
   </Card.Meta>
   <Card.Description>
-	Steve wants to add you to the group <strong>best friends</strong>
+	<strong>欢迎来到Mesiter你可以计划一些有趣的项目😄</strong>
   </Card.Description>
 </Card.Content>
 <Card.Content extra>
   <div className='ui two buttons'>
-	<Button basic color='green' >Contact me</Button>
+	<Button basic color='green'><a href="http://www.ailsa.top">Contact me</a></Button>
 	<Button basic color='red'>Log Out</Button>
   </div>
 </Card.Content>
@@ -79,16 +79,20 @@ class Sidemenu extends React.Component{
 
 			return <div className="side-menu">
 				<div className="flexlist">
+	
 					<svg className="icon icon-add" aria-hidden="true">
 					<use href='#icon-jia-copy'></use>
 					</svg>
+				
 					<svg className="icon icon-fengexian" aria-hidden="true">
 					<use href='#icon-fengexian'></use>
 					</svg>
 					<svg className="icon icon-search" aria-hidden="true">
 					<use href='#icon-search1'></use>
 					</svg>
+					
 					{tab}
+					
 					<Popup
 					className='card-sigin'
 					trigger={label}
@@ -98,7 +102,6 @@ class Sidemenu extends React.Component{
 				/>
 							
 					</div>	
-					<Notifications/>			
 			</div>			
 		}
 

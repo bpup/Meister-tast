@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './bgcss.css'
 let bgclass=null
 class Bg extends React.Component{

@@ -12,6 +12,7 @@
 	z-index: 100;
 }
 .logo{
+	margin-top: 20px;
 	font-family: AvenirWindows, "Segoe UI", Arial, sans-serif;
 	color: #fff;
 	font-size: 38px;
@@ -23,15 +24,18 @@
 	color: #01DFF0;
 }
 .projects{
-	margin-top: 20px;
+	margin-top: 40px;
 	position: relative;
 	color: #fff;
 	font-family: AvenirWindows, "Segoe UI", Arial;
 	cursor: default;
+	cursor: pointer;
 }
-
-.projects:hover .icon-jiantou-copy{
-	display: inline-block;
+.arrow{
+	visibility: hidden !important;
+}
+.projects:hover .arrow{
+	visibility:visible !important;
 }
 .projects>div{
 	font-size: 20px;
@@ -47,6 +51,7 @@
 	
 
 .list li {
+	position: relative;
 	height: 60px;
 	width: 100%;
 	display: flex;
@@ -55,7 +60,7 @@
 	cursor: pointer;
 }
 .list li:hover .icon2{
-	display: inline-block;
+	visibility: visible;
 }
 svg{
 	width: 38px;
@@ -67,7 +72,10 @@ svg{
 	font-size: 36px;
 }
 .icon2{
-	display: none;
+	visibility: hidden;
+	position: absolute;
+	right: -8px;
+	
 }
 li div{
 	font-size: 20px;
@@ -86,4 +94,33 @@ li div{
 .icon-add,span{
 	vertical-align: middle;
 	color: #fff;
+}
+.reset-button{
+	background: none !important;
+	border: none !important;
+	outline: none !important;
+}
+.reset-button:hover{
+	background: #00AAFF !important;
+	color: #fff !important;
+}
+.modal-header.header{
+	font-family: 'HelveticaNeuec9ae47ace519e', "Segoe UI", Arial, sans-serif !important;
+	font-weight: normal !important;
+	font-size: 24px !important;
+	margin-bottom: 6px !important;
+	padding: 8px 0 8px 0 !important;
+}
+.modal-descript{
+	margin-bottom: 16px !important;
+	color:grey;
+}
+.input-description{
+	margin-bottom: 24px !important;
+}
+.selected-icon{
+	margin-right: 10px !important;
+}
+.project-item:hover .selected-icon{
+	color: #01DFF0;
 }

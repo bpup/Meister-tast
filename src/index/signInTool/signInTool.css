@@ -11,6 +11,7 @@
   margin-right: 12px;
   vertical-align: middle;
   cursor: pointer;
+  fill: currentColor;
 }
 
 .side-menu .icon-add {
@@ -122,7 +123,7 @@
   color: #fff;
   font-size: 18px !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  font-family: Arial,Helvetica,sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 18px !important;
 }
 

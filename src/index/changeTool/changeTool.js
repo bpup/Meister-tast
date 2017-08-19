@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import moment from 'moment'
 import './changeTool.css'
 import { Icon, Popup, Button,Card,Header } from 'semantic-ui-react'
@@ -131,7 +130,7 @@ class Gettime extends React.Component{
 			/>
 						
 					
-						<span>Minty</span>
+						<span>✈ Fly to other Theme🗻</span>
 
 		   </div>
 	   }
