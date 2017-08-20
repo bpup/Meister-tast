@@ -140,7 +140,6 @@ class TodoADD extends React.Component{
 	   this.handleAdd=this.handleAdd.bind(this)
    }
    handleAdd(e){
-	this.props.Todolist()
 }
    render(){
 	return <div className="circle-add" onClick={this.handleAdd}></div>	
