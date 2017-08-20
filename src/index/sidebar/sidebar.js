@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route,Link ,  Router, } from 'react-router-dom'
+import {Route,Link ,BrowserRouter as Router, } from 'react-router-dom'
 import './siderbar.css'
 import App from '../../App.js'
 import Projects from '../../projects/project.js'
@@ -88,12 +88,14 @@ const content=<section>
 
 						{this.props.list.map(
 						(e)=>{
-							return <li className="project-item" key={e}>  
+							return <li className="project-item" key={e}> 
+									<Link className="link" to="/project"> 								   
 								   <Icon name='selected radio' className="selected-icon" size='large' />
 									<div className="project-name">{e}</div>
 									<svg className="icon icon2" aria-hidden="true">
 										<use href={'#'+randomIcon()}></use>
 									</svg>
+									</Link>
 								</li>
 						}
 					)}
@@ -169,5 +171,5 @@ const content=<section>
 
 
   
-export default SiderBar
+export default {SiderBar,Logo}
 

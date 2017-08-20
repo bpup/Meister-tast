@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route,Link ,  BrowserRouter as Router, } from 'react-router-dom'
+import {Route,Link , BrowserRouter} from 'react-router-dom'
 import './signInTool.css'
 import { Icon ,Tab,Button,Label, Statistic,Popup,Card, Image} from 'semantic-ui-react'
 const src=[
@@ -23,14 +23,32 @@ const src=[
 ]
 const NAME='JOE'
 
+class Notifications extends React.Component{
+	constructor(props){
+		super(props)
+	}
+	render(){
+
+	return <div className="notifications">
+								<p className="header">Notifications</p>
+			<svg className="icon icon-lingdang" aria-hidden="true">
+			<use href='#icon-lingdang'></use>
+			</svg>
+			<p className="notify">You have no new notifications</p>
+			</div>
+	
+	}
+
+}
 
 const tab=<section className='section-tab'>
-		
+				<Link to="/notify">		
 		 <section className='icon-menu'><div className="overflow">
 		 <svg className="icon lingdang icon-tab" aria-hidden="true">
 					<use href='#icon-redoufu-copy'></use>
 					</svg>
 			 </div></section>
+			 </Link>			 
 		 <section className='icon-menu'>
 		 <svg className="icon icon-add icon-tab" aria-hidden="true">
 					<use href='#icon-test-copy-copy'></use>
@@ -79,18 +97,16 @@ class Sidemenu extends React.Component{
 
 			return <div className="side-menu">
 				<div className="flexlist">
-	
 					<svg className="icon icon-add" aria-hidden="true">
 					<use href='#icon-jia-copy'></use>
 					</svg>
-				
 					<svg className="icon icon-fengexian" aria-hidden="true">
 					<use href='#icon-fengexian'></use>
 					</svg>
 					<svg className="icon icon-search" aria-hidden="true">
 					<use href='#icon-search1'></use>
 					</svg>
-					
+
 					{tab}
 					
 					<Popup
@@ -100,29 +116,18 @@ class Sidemenu extends React.Component{
 					on='click'
 					position='top right'
 				/>
-							
+				<main>
+				<Route className="notifications" path="/notify" exact component={Notifications} />
+			</main>		
 					</div>	
 			</div>			
 		}
 
 }
 
-	 class Notifications extends React.Component{
-		  constructor(props){
-			  super(props)
-		  }
-		  render(){
+const Sidemenus = () =>
+<BrowserRouter>
+	<Sidemenu/>
+</BrowserRouter>;
 
-			return <div className="notifications">
-                    <p className="header">Notifications</p>
-					<svg className="icon icon-lingdang" aria-hidden="true">
-					<use href='#icon-lingdang'></use>
-					</svg>
-					<p className="notify">You have no new notifications</p>
-					</div>
-			
-		  }
-
-	 }
-
-export default Sidemenu
+export default Sidemenus

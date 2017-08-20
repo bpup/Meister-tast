@@ -34,7 +34,7 @@ class App extends Component {
      <Bg themeIndex={this.state.themeIndex}
          themeImgIndex={this.state.themeImgIndex}
      ></Bg>
-     <SiderBar className="side-bar"> </SiderBar>
+     <SiderBar.SiderBar className="side-bar"> </SiderBar.SiderBar>
      <Gettime.Gettime/>
      <Gettime.Famous/>
      <Gettime.ThemeChange 

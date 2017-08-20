@@ -16,7 +16,10 @@ body {
   }
 }
 h1,h2,h3,h4{
-  margin: 0;
+  margin: 0 !important;
+}
+#root{
+  height: 100%;
 }
 .iconfont{
     font-family:"iconfont" !important;
@@ -35,4 +38,8 @@ h1,h2,h3,h4{
       vertical-align: -0.15em;
       fill: currentColor;
       overflow: hidden;
+   }
+   .tastbg{
+     display: flex;
+     flex-direction: column; 
    }
