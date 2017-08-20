@@ -16,6 +16,35 @@ const headerColor=[
 	'#3F51B5',
 	'#E91E63',
 ]
+const headerIcon=[
+	'dashboard',
+	'ticket',
+	'find',
+	'birthday',
+	'lesbian',
+	'heterosexual',
+	'asl',
+	'assistive listening systems',
+	'block layout',
+	'maximize',
+	'flag',
+	'fire',
+	'sun',
+	'bullseye',
+	'snowflake outline',
+	'cube',
+	'film',
+	'game',
+	'motorcycle',
+	'map outline',
+	'reddit',
+	'empire',
+	'twitch',
+	'detective',
+]
+const randomIcon=()=>{
+	return headerIcon[parseInt(Math.random()*headerIcon.length)]
+}
 const randomColor=()=>{
 	return headerColor[parseInt(Math.random()*9)]
 }
@@ -33,8 +62,16 @@ const content=<Card className="clear-border">
         </div>
       </Card.Content>
     </Card>
-			
+const animated= {animation: "inputainmate  .6s linear 0s 1 normal forwards"}
 
+let Todolist=(props)=>{
+	let todolist=props.todolist.map(()=>{
+		<input type="text" className="animate-input" style={animated}/>					
+		
+	})
+	return (<div>{todolist}</div>)
+	
+}
 
 class Project extends React.Component{
 	constructor(props){
@@ -97,20 +134,39 @@ class Header extends React.Component{
 	    	</Container>
 	}
 }
+class TodoADD extends React.Component{
+   constructor(props){
+	   super(props)
+	   this.handleAdd=this.handleAdd.bind(this)
+   }
+   handleAdd(e){
+	this.props.Todolist()
+}
+   render(){
+	return <div className="circle-add" onClick={this.handleAdd}></div>	
+   }
+}
 class Tastbar extends React.Component{
 	constructor(props){
 		super(props)
+		this.addList=this.addList.bind(this)
+        this.state={
+			todoList:[]
+		}
+	}
+	addList(){
+		this.state.todoList.push(1)
 	}
 	render(){
+		const todolist=this.state.todoList
 		return <section className="tastbar" style={this.props.bgmodal&&{background:"rgba(0,0,0,0.18)"}}>
                 <header className="tastbar-header" style={{background:randomColor()}}>
-					<Icon name="life ring" size="big" className="icon-color" color="white"></Icon>
+					<Icon name={randomIcon()} size="big" className="icon-color" color="white"></Icon>
 					<p>{this.props.headerText}</p>
 					<Icon className="arrow1" color="grey" name='caret down' />
 				</header>
-				<div className="circle-add"></div>
+				<TodoADD todolist={this.addList}/>	
 				{!this.props.bgmodal&&<section className="tips">
-
 				<svg className="icon icon-kong2-copy" aria-hidden="true">
 					<use href='#icon-kong2-copy'></use>
 				</svg>
