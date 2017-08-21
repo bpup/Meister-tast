@@ -1,7 +1,16 @@
 import React from 'react';
-import {Route,Link , BrowserRouter} from 'react-router-dom'
+import {
+	HashRouter,
+	Switch,
+	Route,
+	Link
+  } from 'react-router-dom'
 import './signInTool.css'
 import { Icon ,Tab,Button,Label, Statistic,Popup,Card, Image} from 'semantic-ui-react'
+import AV from '../../index.js'
+import createHistory from 'history/createHashHistory'
+
+const history = createHistory()
 const src=[
 	'/avatar/1.svg',
 	'/avatar/2.svg',
@@ -21,7 +30,10 @@ const src=[
 	'/avatar/16.svg',
 	'/avatar/17.svg',
 ]
-const NAME='JOE'
+const randomAvatar=()=>{
+	return src[parseInt(Math.random()*src.length)]
+}
+
 
 class Notifications extends React.Component{
 	constructor(props){
@@ -42,7 +54,7 @@ class Notifications extends React.Component{
 }
 
 const tab=<section className='section-tab'>
-				<Link to="/notify">		
+				<Link to="/App/notify">		
 		 <section className='icon-menu'><div className="overflow">
 		 <svg className="icon lingdang icon-tab" aria-hidden="true">
 					<use href='#icon-redoufu-copy'></use>
@@ -61,40 +73,50 @@ const tab=<section className='section-tab'>
 			 
 			 </div></section>
          </section>
-const label= <Label as='a' color='blue' image className='user-entry'>
-<img src={src[0]} className="img-user"/>
-{NAME}
+const label=(props,state)=> {return <Label name="aa" as='a' color='blue' image className='user-entry'>
+<img src={state.avatar} className="img-user"/>
+    {props.username}
   <Label.Detail>Friend</Label.Detail>
-</Label>
+</Label>}
 	  
-const content= <Card className='clear-border'>
+const content=(props,state,handellogout)=>{ return <Card className='clear-border'>
 <Card.Content>
-  <Image floated='center' size='large' avatar src={src[0]} />
+  <Image floated='center' size='large' avatar src={state.avatar} />
   <Card.Header className="header-name">
-	{NAME}
+	{props.username}		
   </Card.Header>
   <Card.Meta>
 	you are alone
   </Card.Meta>
   <Card.Description>
-	<strong>欢迎来到Mesiter你可以计划一些有趣的项目😄</strong>
+	<strong>欢迎来到Mesiter TODO🏃你可以计划一些有趣的项目😄</strong>
   </Card.Description>
 </Card.Content>
 <Card.Content extra>
   <div className='ui two buttons'>
 	<Button basic color='green'><a href="http://www.ailsa.top">Contact me</a></Button>
-	<Button basic color='red'>Log Out</Button>
+	<Button basic color='red' onClick={handellogout}>Log Out</Button>
   </div>
 </Card.Content>
 </Card>
-
+}
 class Sidemenu extends React.Component{
 		constructor(props){
-			super(props)			
+			super(props)	
+			this.state={
+				avatar:randomAvatar()
+			}
+			this.handelLogOut=this.handelLogOut.bind(this)
 		}
-
+    componentWillMount(){
+		this.setState({avatar:randomAvatar()})
+		}
+		handelLogOut(){
+			AV.User.logOut();
+			var currentUser = AV.User.current();
+			history.push('/')
+		}
 		render(){
-
 			return <div className="side-menu">
 				<div className="flexlist">
 					<svg className="icon icon-add" aria-hidden="true">
@@ -109,15 +131,15 @@ class Sidemenu extends React.Component{
 
 					{tab}
 					
-					<Popup
+					<Popup 
 					className='card-sigin'
-					trigger={label}
-					content={content}
+					trigger={label(this.props,this.state)}
+					content={content(this.props,this.state,this.handelLogOut)}
 					on='click'
 					position='top right'
 				/>
 				<main>
-				<Route className="notifications" path="/notify" exact component={Notifications} />
+				<Route className="notifications" path="/App/notify" exact component={Notifications} />
 			</main>		
 					</div>	
 			</div>			
@@ -125,9 +147,10 @@ class Sidemenu extends React.Component{
 
 }
 
-const Sidemenus = () =>
-<BrowserRouter>
-	<Sidemenu/>
-</BrowserRouter>;
+const Sidemenus=(props)=>{
+	return <HashRouter>
+	<Sidemenu username={props.username}/>
+	</HashRouter>
+}
 
 export default Sidemenus

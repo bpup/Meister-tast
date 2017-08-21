@@ -7,8 +7,10 @@ import Notifications from './index/signInTool/signInTool.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import Sidemenu from './index/signInTool/signInTool.js'
 import 'semantic-ui-css/semantic.min.css';
+import createHistory from 'history/createHashHistory'
+import AV from 'leancloud-storage'
 
-
+const history = createHistory()
 class App extends Component {
   constructor(props){
     super(props)
@@ -16,7 +18,8 @@ class App extends Component {
     this.handelThemeChangeImg=this.handelThemeChangeImg.bind(this)
     this.state={
       themeIndex:'',
-      themeImgIndex:''
+      themeImgIndex:'',
+      UserName:"",
     }
   
   }
@@ -26,6 +29,16 @@ class App extends Component {
   }
   handelThemeChangeImg(themeImgIndex){
     this.setState({themeImgIndex:themeImgIndex})
+    
+  }
+  componentWillMount(){
+    const currentUser=AV.User.current();
+    if(currentUser){
+      const UserName=currentUser.attributes.username;
+     this.setState({UserName:UserName})
+    }else{
+      history.location('/')
+    }
     
   }
   render() {
@@ -41,7 +54,7 @@ class App extends Component {
        themeIndex={this.handelThemeChange}
        themeImgIndex={this.handelThemeChangeImg}
        />
-       <Sidemenu/>
+       <Sidemenu username={this.state.UserName}/>
   
      </div>
     );
