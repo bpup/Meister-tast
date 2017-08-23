@@ -57,7 +57,7 @@ class Gettime extends React.Component{
 			<h1>
 			{this.state.nowtime}
 			</h1>
-			<h2>{this.state.nowloacl}, {visitor}!</h2>
+			<h2>{this.state.nowloacl}, {this.props.username}!</h2>
 			</div>
 	}
 }

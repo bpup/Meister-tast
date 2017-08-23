@@ -4,7 +4,10 @@ import './siderbar.css'
 import App from '../../App.js'
 import Projects from '../../projects/project.js'
 import { Icon, Popup, Button,Card,Header , Modal , Input} from 'semantic-ui-react'
+import AV from 'leancloud-storage'
+import {createStore} from 'redux'
 
+// let store=createStore()
 const content=<section>
 <Button fluid className='reset-button'>未完成的项目</Button>
 <Button fluid className='reset-button'>已完成的项目</Button>
@@ -24,7 +27,9 @@ const content=<section>
 		 this.state={
 			 ProjectList:[],
 			 DescriptionList:[],
-			
+			 todoFolderid:'',
+			 result:null,
+			 avatar:null
 			} 
 	 }
 	
@@ -36,16 +41,42 @@ const content=<section>
 			}
 		)
 	}
+	componentWillMount(){
+		this.setState({
+			avatar:this.props.avatar
+		})
+		var _this=this;
+		let query=(username)=>{
+			var query = new AV.Query('TodoFolder');
+			   query.equalTo('username', username);
+			   query.find().then(function (results) {
+				_this.setState({result:results})		
+		}, function (error) {
+		})
+		}
+		query(this.props.username)
+		
+	 }
 	
 	
+
+	   
 		 render(){
+			const username=this.props.username; 
+			const email=this.props.email; 
+			const projectlist=this.state.Projectlist;
+			// 第一个参数是 className，第二个参数是 objectId
+			
 			 return <div className='sidebar-bg'>
 				 <section>
 				 <Logo/>
 				 <Project/>
-				 <List list={this.state.ProjectList}/>
+				 <List avatar={this.state.avatar} list={this.state.ProjectList} 
+				 comelist={this.state.result} 
+				 username={this.props.username}
+				 />
 				 </section>
-				 <AddProject receiveMessage={this.receiveMessage}/>
+				 <AddProject username={username} receiveMessage={this.receiveMessage}/>
 			 </div>		 
 		 }
  }
@@ -61,7 +92,9 @@ const content=<section>
  class Project extends React.Component{
 	 constructor(props){
 		 super(props)
-
+		 this.state={
+			 list:null
+		 }	
 	 }
 		 render(){
 			 return <div className='projects'>
@@ -80,16 +113,38 @@ const content=<section>
  class List extends React.Component{
 	 constructor(props){
 		 super(props)
-		 
+		 this.state={
+			 list:[]
+		 }
 	 }
-	
+	 componentWillReceiveProps(props,state){
+		   let arr=[];
+		   props.comelist.forEach(item =>{
+			 arr.push(item.attributes.project.arr[0].busName)
+		   } )
+		   let list=arr.concat(props.list)
+		 
+		   this.setState({list:list})
+		   
+	 }
+
 		 render(){
+			 let avatar=this.props.avatar
+			 let list=this.state.list;
+		
 			 return <ol className='list'>
 
-						{this.props.list.map(
+						{list.map(
 						(e)=>{
+							let url="/project/"+e							
+							let location = {
+								pathname: url,
+								state: { 
+									avatar: avatar,
+									username: this.props.username}
+							}
 							return <li className="project-item" key={e}> 
-									<Link className="link" to="/project"> 								   
+									<Link className="link" to={location}> 								   
 								   <Icon name='selected radio' className="selected-icon" size='large' />
 									<div className="project-name">{e}</div>
 									<svg className="icon icon2" aria-hidden="true">
@@ -112,15 +167,18 @@ const content=<section>
 		 this.state = { 
 			 open: false ,
 			 busMesage:'',
-			 busName:''
-		
-			
+			 busName:'',
+			 isdone:false,
+			 results:''
 			}
 		 
 		   
 	 }
 	 show = (dimmer) => () => this.setState({ dimmer, open: true })
-	 close = () => this.setState({ open: false })
+	 close = () =>{ 
+		 this.setState({ open: false })	
+		 this.setState({ isdone: true })	
+		}
 	 postMessage=(e)=>{
 		 this.setState({busMesage:e.target.value})}
 	 posName=(e)=>{
@@ -128,6 +186,33 @@ const content=<section>
 	 sendMessage=()=>{
 		 this.props.receiveMessage(this.state.busName,this.state.busMesage)
 	 } 
+	 componentDidUpdate(nextProps, nextState){
+		 let _this=this
+		 let arr=[]
+		 arr.push({busName:nextState.busName,busMesage:nextState.busMesage,todocount:0})
+         let objarr={'arr':arr}
+		 if(this.state.isdone){
+			this.setState({isdone:false})	 			
+			var Todo = AV.Object.extend('Todo');
+			var TodoFolder = AV.Object.extend('TodoFolder');
+			// 新建对象
+			var todoFolder = new TodoFolder();
+			// 设置名称
+			todoFolder.set('project',objarr);
+			todoFolder.set('username',_this.props.username);
+			// 设置优先级
+			todoFolder.set('priority',1);
+			todoFolder.save().then(function (todo) {
+			
+			
+			}, function (error) {
+			  console.log(error);
+			});
+						 						 
+		 }
+	
+	 }
+
 		 render(){
 			 const { open, dimmer } = this.state
 			 return <div className='add'>
@@ -170,6 +255,5 @@ const content=<section>
  }
 
 
-  
 export default {SiderBar,Logo}
 

@@ -24,17 +24,19 @@ import {
   });
 
 
+
 class IndexList extends React.Component{
 	constructor(props){
 		super(props)
 	}
 	render(){
-		return <div style={{height:'100%'}} className="tastbg">	
+		return <div style={{height:'100%'}} className="tastbg">			
 		<Switch>
           <Route exact path='/' component={Log}/>
-          <Route path='/App' component={App}/>
-          <Route path='/project' component={Project}/>
+			  <Route path='/App' component={App}/>
+              <Route path='/project/:id' component={Project}/>
         </Switch>
+		
 		</div>
 	}
 }
@@ -47,4 +49,6 @@ const IndexListChange=()=>{
 
 ReactDOM.render(<IndexListChange/>, document.getElementById('root'));
 registerServiceWorker();
-export default AV
+
+
+

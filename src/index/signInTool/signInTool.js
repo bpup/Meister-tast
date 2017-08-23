@@ -7,32 +7,10 @@ import {
   } from 'react-router-dom'
 import './signInTool.css'
 import { Icon ,Tab,Button,Label, Statistic,Popup,Card, Image} from 'semantic-ui-react'
-import AV from '../../index.js'
+import AV from 'leancloud-storage'
 import createHistory from 'history/createHashHistory'
-
 const history = createHistory()
-const src=[
-	'/avatar/1.svg',
-	'/avatar/2.svg',
-	'/avatar/3.svg',
-	'/avatar/4.svg',
-	'/avatar/5.svg',
-	'/avatar/6.svg',
-	'/avatar/7.svg',
-	'/avatar/8.svg',
-	'/avatar/9.svg',
-	'/avatar/10.svg',
-	'/avatar/11.svg',
-	'/avatar/12.svg',
-	'/avatar/13.svg',
-	'/avatar/14.svg',
-	'/avatar/15.svg',
-	'/avatar/16.svg',
-	'/avatar/17.svg',
-]
-const randomAvatar=()=>{
-	return src[parseInt(Math.random()*src.length)]
-}
+
 
 
 class Notifications extends React.Component{
@@ -104,12 +82,14 @@ class Sidemenu extends React.Component{
 		constructor(props){
 			super(props)	
 			this.state={
-				avatar:randomAvatar()
+				avatar:null
 			}
 			this.handelLogOut=this.handelLogOut.bind(this)
 		}
     componentWillMount(){
-		this.setState({avatar:randomAvatar()})
+		 let avatar=this.props.avatar;
+	   this.setState({avatar:avatar})
+
 		}
 		handelLogOut(){
 			AV.User.logOut();
@@ -149,7 +129,7 @@ class Sidemenu extends React.Component{
 
 const Sidemenus=(props)=>{
 	return <HashRouter>
-	<Sidemenu username={props.username}/>
+	<Sidemenu username={props.username} avatar={props.avatar}/>
 	</HashRouter>
 }
 

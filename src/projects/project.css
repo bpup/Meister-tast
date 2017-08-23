@@ -104,6 +104,7 @@
 
 .popup.project-search .content {
   padding: 0;
+  cursor: pointer;
 }
 
 .tastwarp {
@@ -236,6 +237,9 @@
 }
 
 .animate-input {
+  color: #000 !important;
+  font-size: 14px;
+  position: absolute;
   width: 290px;
   height: 48px;
   outline: none;
@@ -247,6 +251,7 @@
   transform: translateX(-50%);
   top: 100px;
   padding: 10px;
+  background-color: #fff;
 }
 
 @keyframes inputainmate {
@@ -262,7 +267,7 @@
   50% {
     width: 150px;
     height: 24px;
-    outline: 1px solid #00A8FF;
+    outline: 1px solid #00A7FF;
   }
   75% {
     width: 225px;
@@ -274,4 +279,8 @@
     height: 48px;
     display: block;
   }
+}
+
+.label.ribbon {
+  position: absolute !important;
 }
