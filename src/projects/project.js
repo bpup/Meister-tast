@@ -201,11 +201,22 @@ class Tastbar extends React.Component{
 			inputarr:[],
 			bgnotice:false,
 			open: false, 
-			result: 'show the modal to capture a result'
+			result: 'show the modal to capture a result',
+			hasdone:false,
+			islabel:true,
 		}
 	}
 	  show = () => this.setState({ open: true })
-	  handleConfirm = () => this.setState({ result: 'confirmed', open: false,isdone:true })
+	  handleConfirm = (e) => {
+		
+		  this.setState({ 
+		  result: 'confirmed',
+		   open: false,
+		   hasdone:true,
+		   islabel:false,
+		   
+		})
+	}
 	  handleCancel = () => this.setState({ result: 'cancelled', open: false })
    addList(){
 		let count=++this.state.count
@@ -213,7 +224,8 @@ class Tastbar extends React.Component{
 			count:count,
 			inputarr:Array(count),
 			bgnotice:true,
-			isdone:false
+			hasdone:false,
+			islabel:true,
 		})
 
 	
@@ -237,17 +249,17 @@ class Tastbar extends React.Component{
 		const { open, result } = this.state
 		let arr=this.state.inputarr;
 		let newarr=[]
-		const done=(state)=>{
-			if(this.state.isdone){
-				return 'background:"url("./done.svg") right 38%  no-repeat", backgroundSize:"84px 84px"'
-			}
-		}
-		let bgdone=done(this.state.isdone)
+		let hasdone=this.state.hasdone;
+		let donestyle=hasdone?'modalsure animate-input':'animate-input'
+    
 		for(var i=0;i<arr.length;i++){
-			newarr.push(<div><input type="text" onDoubleClick={this.handelEditChange} key={i} onBlur={this.handelEdit} className="animate-input" 
+			newarr.push(<div><input type="text"  onDoubleClick={this.handelEditChange} key={i} onBlur={this.handelEdit} 
+			className={donestyle}
 			placeholder="请输入这个项目准备的todo name"
-			style={{animation: "inputainmate  .2s linear 0s 1 normal forwards",top:i*60+110+'px',border:'1px solid #00AAFF',bgdone}}/>
-			{!this.state.isdone&&<Label as='a' size='mini' onClick={this.show} style={{top:i*60+116+'px',left:'318px'}} color={this.props.tagColor} 
+			style={{animation: "inputainmate  .2s linear 0s 1 normal forwards",
+			top:i*60+110+'px',border:'1px solid #00AAFF',
+			}}/>
+			{this.state.islabel&&<Label as='a' key={i+'label'} size='mini' onClick={this.show} style={{top:i*60+116+'px',left:'318px'}} color={this.props.tagColor} 
 			className='ribbon' ribbon='right'>{this.props.tagText}</Label>} 
 					<Confirm 
 					content="您确定这个任务认真完成了吗？"

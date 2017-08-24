@@ -284,3 +284,9 @@
 .label.ribbon {
   position: absolute !important;
 }
+
+.modalsure {
+  background: url("./done.svg") right center no-repeat;
+  background-size: 84px 84px;
+  background-color: #fff;
+}

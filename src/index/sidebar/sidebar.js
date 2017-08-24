@@ -77,7 +77,7 @@ const content=<section>
 				 />
 				 </section>
 				 <AddProject username={username} receiveMessage={this.receiveMessage}/>
-			 </div>		 
+			 </div>	
 		 }
  }
  class Logo extends React.Component{
