@@ -4,7 +4,9 @@ body {
   font-family: AvenirWindows, "Segoe UI", Arial, sans-serif-serif;
   box-sizing: border-box;
 }
-
+*{
+  overflow: hidden;
+}
 body a {
   color: #fff;
   text-decoration: none;

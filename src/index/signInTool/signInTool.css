@@ -2,6 +2,7 @@
   position: absolute;
   right: 5%;
   top: 20px;
+  border-right: 0;
 }
 
 .side-menu .icon {
@@ -63,18 +64,21 @@
   border-bottom-left-radius: 8px;
 }
 
+.overflow2 {
+  height: 100%;
+}
+
 .overflow1 {
   height: 100%;
-  width: 110px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  width: 108px;
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 
 .icon-menu {
   position: relative;
   height: 100%;
   width: 110px;
-  border-right: 1px solid #fff;
   cursor: pointer;
   overflow: hidden;
   box-sizing: border-box;
@@ -88,11 +92,11 @@
   background: #00AAFF;
 }
 
-.icon-menu:nth-child(3):hover .overflow1 {
+.icon-menu:hover .overflow2 {
   background: #00AAFF;
 }
 
-.icon-menu:nth-child(2):hover {
+.icon-menu:hover .overflow1 {
   background: #00AAFF;
 }
 
@@ -115,10 +119,15 @@
   left: 16px;
 }
 
-.notifications {
+.notifications, .hashdone, .waitdone {
   position: absolute;
-  right: 4%;
+  right: 3%;
   top: 28px;
+}
+
+.notifications {
+  right: 20%;
+  text-align: center;
 }
 
 .header {
@@ -126,7 +135,8 @@
   font-size: 18px !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   font-family: Arial, Helvetica, sans-serif;
-  margin: 18px !important;
+  margin: 18px 0 18px 0 !important;
+  text-align: left;
 }
 
 .icon-lingdang {
@@ -135,9 +145,14 @@
 }
 
 .notify {
+  text-align: center;
   color: #fff;
   font-size: 18px;
   margin: 10px 90px;
+}
+
+.big {
+  margin-left: 0 !important;
 }
 
 .avatr {

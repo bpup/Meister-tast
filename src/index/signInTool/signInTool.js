@@ -21,13 +21,137 @@ class Notifications extends React.Component{
 
 	return <div className="notifications">
 								<p className="header">Notifications</p>
-			<svg className="icon icon-lingdang" aria-hidden="true">
+			<svg className="icon icon-lingdang big"  aria-hidden="true">
 			<use href='#icon-lingdang'></use>
 			</svg>
-			<p className="notify">You have no new notifications</p>
+			<p className="notify">🤗有bug请留言</p>
 			</div>
 	
 	}
+
+}
+class Hasdone extends React.Component{
+	constructor(props){
+		super(props)
+		this.state={
+			result:null
+		}
+	}
+		componentWillMount(){
+		var _this=this
+		var result
+		var query = new AV.Query('TodoFolder');
+		query.equalTo('username', this.props.username);
+		query.find().then(function (results) {
+			   result=results.filter((item)=>{
+					return !!item.attributes.todolist
+				
+			})
+		}).then(function(){
+			let listresult=result.map((itemresult)=>{
+				let arr=null;
+				// console.log(itemresult)
+			  arr=itemresult.attributes.todolist.uniqustate.filter((items)=>{
+					return items.isdone
+				})
+				return arr
+			})
+			// console.log(listresult)
+			 _this.setState(
+				  {result:listresult}
+				
+			 )
+		})
+	}
+	render(){
+		let resultlist=this.state.result||[]
+		
+		if(resultlist!==[]){
+			let donelist=resultlist.map((item,i)=>{
+	      //  console.log(item[0].value)
+					return <input type="text" 
+					className='animate-input modalsure'
+					disabled
+					key={item[0].value}
+					value={item[0].value}
+					style={{animation: "inputainmate  .2s linear 0s 1 normal forwards",
+					top:i*60+60+'px',left:300+'px'
+					}} />
+
+				})
+			
+		
+			return <div>{donelist}</div>
+		
+		}
+		}
+		
+
+}
+class Waitdone extends React.Component{
+	constructor(props){
+		super(props)
+		this.state={
+			result:null
+		}
+	}
+		componentWillMount(){
+		var _this=this
+		var result
+		var query = new AV.Query('TodoFolder');
+		query.equalTo('username', this.props.username);
+		query.find().then(function (results) {
+			   result=results.filter((item)=>{
+					return !!item.attributes.todolist
+				
+			})
+		}).then(function(){
+			let listresult=result.map((itemresult)=>{
+				let arr=null;
+				// console.log(itemresult)
+			  arr=itemresult.attributes.todolist.uniqustate.filter((items)=>{
+					return !items.isdone
+				})
+				return arr
+			})
+			 _this.setState(
+				  {result:listresult}
+				
+			 )
+		})
+	}
+	render(){
+			let resultlist=this.state.result||[]
+			var arr=null
+			let donelist=resultlist.map((item,i)=>{
+				if(item.length>0){
+					 arr=item.map((item,i)=>{	
+						 console.log(item)
+						let val=item.projectname +'下的 '+'--'+item.value+'--'+' 等待完成💤' 					
+						return <input type="text" 
+						className='animate-input'
+						disabled
+						key={item.value}
+						value={val}
+						style={{animation: "inputainmate  .2s linear 0s 1 normal forwards",
+						top:i*60+60+'px',left:300+'px'
+						}} />
+					})
+					return arr	
+				}
+	
+				})
+				
+		  if(arr){
+			return <div>{arr}</div>
+			
+			}else{
+				return <div></div>
+			}
+		
+		
+		}
+		
 
 }
 
@@ -38,18 +162,23 @@ const tab=<section className='section-tab'>
 					<use href='#icon-redoufu-copy'></use>
 					</svg>
 			 </div></section>
-			 </Link>			 
-		 <section className='icon-menu'>
+			 </Link>	
+			 <Link to="/App/hasdone">					 		 
+		 <section className='icon-menu'><div className="overflow2">
 		 <svg className="icon icon-add icon-tab" aria-hidden="true">
 					<use href='#icon-test-copy-copy'></use>
 					</svg>
+					</div>
 		 </section>
+		 </Link>		
+		 <Link to="/App/waitdone">	 
 		 <section className='icon-menu'><div className="overflow1">
 		 <svg className="icon icon-add icon-tab" aria-hidden="true">
 					<use href='#icon-shizhong'></use>
 					</svg>
 			 
 			 </div></section>
+			 </Link>
          </section>
 const label=(props,state)=> {return <Label name="aa" as='a' color='blue' image className='user-entry'>
 <img src={state.avatar} className="img-user"/>
@@ -120,6 +249,10 @@ class Sidemenu extends React.Component{
 				/>
 				<main>
 				<Route className="notifications" path="/App/notify" exact component={Notifications} />
+				<Route className="hasdone" username={this.props.username} path="/App/hasdone" 
+				render={() =><Hasdone username={this.props.username}/>}/>
+				<Route className="waitdone" username={this.props.username} path="/App/waitdone" 
+				render={() =><Waitdone username={this.props.username}/>}/>
 			</main>		
 					</div>	
 			</div>			

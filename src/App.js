@@ -9,18 +9,9 @@ import Sidemenu from './index/signInTool/signInTool.js'
 import 'semantic-ui-css/semantic.min.css';
 import createHistory from 'history/createHashHistory'
 import AV from 'leancloud-storage'
-import {createStore} from 'redux'
 import {Provider,connect} from 'react-redux'
 
-// const projectlist = (state = , action) => {
-//   switch (action.type) {
-//     case 'ACTION_TYPE':
-//       return ;
-//     default:
-//       return state;
-//   }
-// };
-// let store=createStore()
+
 const src=[
 	'/avatar/1.svg',
 	'/avatar/2.svg',
@@ -40,6 +31,7 @@ const src=[
 	'/avatar/16.svg',
 	'/avatar/17.svg',
 ]
+
 const randomAvatar=()=>{
 	return src[parseInt(Math.random()*src.length)]
 }

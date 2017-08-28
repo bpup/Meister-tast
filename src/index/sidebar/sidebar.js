@@ -119,7 +119,7 @@ const content=<section>
 	 }
 	 componentWillReceiveProps(props,state){
 		   let arr=[];
-		   props.comelist.forEach(item =>{
+		   props.comelist.map(item =>{
 			 arr.push(item.attributes.project.arr[0].busName)
 		   } )
 		   let list=arr.concat(props.list)
@@ -141,7 +141,10 @@ const content=<section>
 								pathname: url,
 								state: { 
 									avatar: avatar,
-									username: this.props.username}
+									username: this.props.username,
+									list:this.state.list,
+									
+									}
 							}
 							return <li className="project-item" key={e}> 
 									<Link className="link" to={location}> 								   
@@ -169,7 +172,8 @@ const content=<section>
 			 busMesage:'',
 			 busName:'',
 			 isdone:false,
-			 results:''
+			 results:'',
+			 id:null
 			}
 		 
 		   
@@ -193,17 +197,19 @@ const content=<section>
          let objarr={'arr':arr}
 		 if(this.state.isdone){
 			this.setState({isdone:false})	 			
-			var Todo = AV.Object.extend('Todo');
 			var TodoFolder = AV.Object.extend('TodoFolder');
 			// 新建对象
 			var todoFolder = new TodoFolder();
 			// 设置名称
 			todoFolder.set('project',objarr);
+			todoFolder.set('projectname',nextState.busName);
 			todoFolder.set('username',_this.props.username);
 			// 设置优先级
 			todoFolder.set('priority',1);
 			todoFolder.save().then(function (todo) {
-			
+			 this.setState({
+				 id:todo.id
+			 })
 			
 			}, function (error) {
 			  console.log(error);

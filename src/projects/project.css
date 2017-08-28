@@ -45,6 +45,7 @@
 }
 
 .header.container .username {
+  margin-right: 10px;
   color: #8A9499;
   font-weight: normal;
   line-height: 60px;
@@ -95,11 +96,11 @@
 
 .popup.project-search {
   margin-top: 0 !important;
-  height: 240px !important;
 }
 
 .popup.project-search .header {
   margin: 0 0 12px 0 !important;
+  height: auto;
 }
 
 .popup.project-search .content {
@@ -107,20 +108,190 @@
   cursor: pointer;
 }
 
-.tastwarp {
+.popup.project-search .card {
+  height: auto;
+}
+
+.popup.project-search::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.clear-border {
+  min-height: 200px !important;
+  height: 100%;
+}
+
+.tastwarp1 {
   display: flex;
   justify-content: flex-start;
   height: calc(100% - 60px) !important;
   background: linear-gradient(-45deg, #92FE9D, #00C9FF) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tastwarp2 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #E83358, #FD62C2) !important;
+  /* Chrome 10-25, Safari 5.1-6 */
+}
+
+.tastwarp3 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #8153CE, #DD5BE4) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tastwarp4 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #2c3e50, #3498db) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tastwarp5 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #ee9ca7, #ffdde1) !important;
+  /* Chrome 10-25, Safari 5.1-6 */
+}
+
+.tastwarp6 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #F1F2B5, #135058) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tastwarp7 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #D1913C, #FFD194) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tastwarp8 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #7b4397, #dc2430) !important;
+  /* Chrome 10-25, Safari 5.1-6 */
+}
+
+.tastwarp9 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #8e9eab, #eef2f3) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tastwarp10 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #136a8a, #267871) !important;
+}
+
+.tastwarp11 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #00bf8f, #001510) !important;
+  /* Chrome 10-25, Safari 5.1-6 */
+}
+
+.tastwarp12 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(-45deg, #C9FFBF, #FFAFBD) !important;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.tastwarpimg1 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/1.jpg) no-repeat !important;
+  background-size: cover !important;
+}
+
+.tastwarpimg2 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/2.jpg) no-repeat !important;
+  background-size: cover !important;
+}
+
+.tastwarpimg3 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/3.jpg) no-repeat !important;
+  background-size: cover !important;
+}
+
+.tastwarpimg4 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/4.jpg) no-repeat !important;
+  background-size: cover !important;
+}
+
+.tastwarpimg5 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/5.jpg) no-repeat !important;
+  background-size: cover !important;
+}
+
+.tastwarpimg6 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/6.jpg) no-repeat !important;
+  background-size: cover !important;
+}
+
+.tastwarpimg7 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/7.jpg) no-repeat !important;
+  background-size: cover !important;
+}
+
+.tastwarpimg8 {
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 60px) !important;
+  background: url(./../bgimages/8.jpg) no-repeat !important;
+  background-size: cover !important;
 }
 
 .tastbar {
-  width: 320px;
+  max-width: 320px;
+  flex-grow: 1;
+  height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
+  display: inline-block;
 }
 
 .tastbar .tastbar-header {
@@ -148,33 +319,22 @@
 
 .tastbar .icon-color {
   color: #fff;
+  position: relative;
+  left: 14px;
 }
 
-.tastbar .tips {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  text-align: center;
-}
-
-.tastbar .tips .icon-kong2-copy {
-  font-size: 120px;
-  margin-right: 0;
-}
-
-.tastbar .tips p {
+.tastbar p {
   color: #fff;
   font-size: 22px;
   text-align: center;
 }
 
-.tastbar .tips p.notice {
+.tastbar p.notice {
   font-size: 16px;
   color: #fff;
 }
 
-.tastbar .circle-add {
+.circle-add {
   position: absolute;
   left: 50%;
   top: 70px;
@@ -187,11 +347,11 @@
   cursor: pointer;
 }
 
-.tastbar .circle-add:hover {
+.circle-add:hover {
   background: #e7e7e7;
 }
 
-.tastbar .circle-add::before {
+.circle-add::before {
   content: '';
   position: absolute;
   height: 2px;
@@ -202,7 +362,7 @@
   border-radius: 1px;
 }
 
-.tastbar .circle-add::after {
+.circle-add::after {
   content: '';
   position: absolute;
   height: 12px;
@@ -240,8 +400,8 @@
   color: #000 !important;
   font-size: 14px;
   position: absolute;
-  width: 290px;
   height: 48px;
+  max-width: 290px;
   outline: none;
   border: none;
   border-radius: 8px;
@@ -289,4 +449,45 @@
   background: url("./done.svg") right center no-repeat;
   background-size: 84px 84px;
   background-color: #fff;
+}
+
+.list-button {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 18px !important;
+  line-height: 1.2;
+}
+
+.list-button:hover {
+  background: #00AAFF !important;
+  color: #fff !important;
+}
+
+.tips {
+  position: absolute;
+  transform: translate(-50%, -50%) !important;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+}
+
+.tips .icon-kong2-copy {
+  font-size: 120px;
+  margin-right: 0;
+}
+
+.addgroup {
+  position: relative;
+}
+
+.bg {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.addwarp {
+  display: inline-flex;
+  font-size: 0;
+  flex-grow: 3;
+  justify-content: flex-start;
 }
