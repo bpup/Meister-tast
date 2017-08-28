@@ -10,7 +10,6 @@ const famous=[
 	'生命，那是自然付给人类去雕琢的宝石。——诺贝尔',
 	'你的心灵常常是战场。在这个战场上，你的理性与判断和你的热情与嗜欲开战。——纪伯伦',
 	'等到自私的幸福变成了人生唯一的目标之后，不久人生就变得没有目标。——罗曼.罗兰',
-	'What you want to do, and what you can do, is limited only by what you can dream. – Mike Melville, Astronaut',
 	'Being in love is not a choice we make once; it’s a choice we make multiple times. – Bruce Feiler, Writer',
 	'Always do right. This will gratify some people and astonish the rest.– Mark Twain, Writer',
 	'If you don’t know where you’re going, you might not get there.– Yogi Berra, Baseball Manager',
@@ -18,8 +17,9 @@ const famous=[
 	'The greatest pleasure I know is to do a good action by stealth, and to have it found out by accident.– Charles Lamb, Writer',
 	'There exists in the world a single path along which no one can go except you: whither does it lead? Do not ask, go along it.— Friedrich Nietzsche, Philosophe',
 	'I have nothing to offer but blood, toil tears and sweat. – Winston Churchill',
-	'I have nothing to offer but blood, toil tears and sweat. – Winston Churchill',
 	'Patience is bitter, but its fruit is sweet. –Jean Jacques Rousseau',
+	'世界上一成不变的东西，只有“任何事物都是在不断变化的”这条真理。 —— 斯里兰卡',	
+	'世界上没有什么是一顿烧烤解决不了的，如果有，那就两顿。－－－－－尼古拉斯·赵四'	
 ]
 
 const visitor='Visitor';

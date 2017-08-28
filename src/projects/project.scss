@@ -250,7 +250,7 @@
 	background-size: cover !important;	
 }
 .tastbar{
-	// min-width: 320px;
+	overflow-y: hidden;	
 	max-width: 320px;
 	flex-grow: 1;
 	height:100%;

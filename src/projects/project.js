@@ -403,9 +403,39 @@ class ExtarBar extends React.Component{
 			  }
 			  
 		  }
+		  if(nextProps.intodo1.length>0){
+			var todo1=<Tastbar bgmodal='true' 
+				update='updated' headerText='TODO1'
+				 tagText='🤾' tagColor="olive"
+				 in={nextProps.intodo1}
+				 username={this.props.username}  projectname={this.props.projectname}
+				 key='updated1'
+				 count={this.props.count}/>
+			  
+		  }
+		  if(nextProps.intodo2.length>0){
+	
+			var todo2=<Tastbar bgmodal='false' 
+				update='updated' headerText='TODO2'
+				 tagText='🤾' tagColor="pink"
+				 in={nextProps.intodo2}
+				 username={this.props.username}  projectname={this.props.projectname}
+				 key='updated2'
+				 count={this.props.count}/>
+			  
+		  }
+		  if(nextProps.intodo3.length>0){
+			var todo3=<Tastbar tagText='🚴'
+				   bgmodal='true' update='updated'
+			 		in={nextProps.intodo3}
+				   key={'updated3'+projectname}
+				   username={this.props.username} projectname={this.props.projectname}
+				   tagColor="violet" headerText='TODO3' count={this.props.count}/>
+			
+		  }
 		  this.setState({
 			count:count,
-			projectitem:this.state.projectitem.concat(tastbar)
+			projectitem:this.state.projectitem.concat(tastbar,todo1,todo2,todo3)
 		  })
 	}
 	
@@ -595,31 +625,31 @@ class TaskInput extends React.Component{
 		e.target.removeAttribute('disabled')
 		e.target.style.border='1px solid #00AAFF'
 		e.target.style.cursor='auto'
-		let inputarr=document.getElementsByClassName('animate-input')	
-		let inputarrval=Array.prototype.map.call(inputarr,(item)=>{
-			return item.value
-		})
-		  
-		let newinputarrval=inputarrval.filter((ele,i)=>{
-		   return ele==e.target.value
-		})
-		console.log(newinputarrval,'inputarrval')	
-
-		if(newinputarrval.length>=2){
-			e.target.value='todo name不能重复哦'
-			e.target.style.border='1px solid red'
-		}else{
-		
-	   if(e.target.value=='todo name不能重复哦5	'){
-			 return
-			}else{
-				this.setState({
-					value:e.target.value
-				})
-			}
-		
-		}	
+			let inputarr=document.getElementsByClassName('animate-input')	
+			let inputarrval=Array.prototype.map.call(inputarr,(item)=>{
+				return item.value
+			})
+			  
+			let newinputarrval=inputarrval.filter((ele,i)=>{
+               return ele==e.target.value
+			})
+			console.log(newinputarrval,'inputarrval')	
 	
+			if(newinputarrval.length>=2){
+				e.target.value='todo name不能重复哦'
+				e.target.style.border='1px solid red'
+			}else{
+			
+	       if(e.target.value=='todo name不能重复哦5	'){
+				 return
+				}else{
+					this.setState({
+						value:e.target.value
+					})
+				}
+			
+			}	
+		
 		
 	}	
 	handelEdit(e){
@@ -774,11 +804,19 @@ class InputList extends React.Component{
 				todolistarr:[],
 				isdone:null,
 				count:0,
-				instate:null
+				instate:[]
 			}
 		}
-	 componentWillReceiveProps = (nextProps) => {
+	componentDidMount() {
+		let ins=this.props.in;
+		
+   this.setState({
+	 instate:this.state.instate.concat(ins)
+   })
+	}	
+	 componentWillReceiveProps(nextProps){
 	   let ins=nextProps.in;
+			
 	   this.setState({
 		 instate:ins
 	   })
@@ -789,6 +827,7 @@ class InputList extends React.Component{
 	
 	  
 		render(){
+			
 			var inputarr=this.props.inputarr;
 			let instate=this.state.instate;
 			if(instate!=null){

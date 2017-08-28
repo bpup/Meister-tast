@@ -283,6 +283,7 @@
 }
 
 .tastbar {
+  overflow-y: hidden;
   max-width: 320px;
   flex-grow: 1;
   height: 100%;
