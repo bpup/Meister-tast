@@ -100,7 +100,7 @@ li div{
 	font-family: 'HelveticaNeuec9ae47ace519e', "Segoe UI", Arial, sans-serif !important;
 	font-weight: normal !important;
 	font-size: 24px !important;
-	margin-bottom: 6px !important;
+	margin: 8px 0 8px 16px !important;
 	padding: 8px 0 8px 0 !important;
 }
 .modal-descript{

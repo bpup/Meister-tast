@@ -189,20 +189,20 @@ const headerIcon=[
 	'detective',
 ]
 const src=[
-	'/avatar/project1.svg',
-	'/avatar/project2.svg',
-	'/avatar/project3.svg',
-	'/avatar/project4.svg',
-	'/avatar/project5.svg',
-	'/avatar/project6.svg',
-	'/avatar/project7.svg',
-	'/avatar/project8.svg',
-	'/avatar/project9.svg',
-	'/avatar/project10.svg',
-	'/avatar/project11.svg',
-	'/avatar/project12.svg',
-	'/avatar/project13.svg',
-	'/avatar/project14.svg',
+	'./avatar/project1.svg',
+	'./avatar/project2.svg',
+	'./avatar/project3.svg',
+	'./avatar/project4.svg',
+	'./avatar/project5.svg',
+	'./avatar/project6.svg',
+	'./avatar/project7.svg',
+	'./avatar/project8.svg',
+	'./avatar/project9.svg',
+	'./avatar/project10.svg',
+	'./avatar/project11.svg',
+	'./avatar/project12.svg',
+	'./avatar/project13.svg',
+	'./avatar/project14.svg',
 ]
 const randomAvatarP=()=>{
 	return src[parseInt(Math.random()*src.length)]
@@ -726,8 +726,6 @@ class TaskInput extends React.Component{
 
 }}
 
-
-
 class Tastbar extends React.Component{
 	constructor(props){
 		super(props)
@@ -748,9 +746,7 @@ class Tastbar extends React.Component{
 			bgnotice:true,
 			inputarr:this.state.inputarr.concat(['']),
 		})
-	}
-
-	
+	}	
 	handelEdit(e){
 		this.props.handelEdit(e)
 	}
@@ -820,12 +816,7 @@ class InputList extends React.Component{
 	   this.setState({
 		 instate:ins
 	   })
-	 }
-	 
-	 
-	   
-	
-	  
+	 }	  
 		render(){
 			
 			var inputarr=this.props.inputarr;
@@ -834,8 +825,7 @@ class InputList extends React.Component{
 				inputarr=instate.concat(inputarr)
 				// console.log(inputarr[0],'demo')
 			}	
-			
-			
+					
 			let vals=this.props.val
 			let inputlist=inputarr.map((item,index)=>{
 				return <TaskInput
@@ -853,12 +843,4 @@ class InputList extends React.Component{
 		}
 
 		}
-
-
-
-	
-			 	
-
-
-
 export default withRouter(Project)

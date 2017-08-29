@@ -50,13 +50,11 @@ class Hasdone extends React.Component{
 		}).then(function(){
 			let listresult=result.map((itemresult)=>{
 				let arr=null;
-				// console.log(itemresult)
 			  arr=itemresult.attributes.todolist.uniqustate.filter((items)=>{
 					return items.isdone
 				})
 				return arr
 			})
-			// console.log(listresult)
 			 _this.setState(
 				  {result:listresult}
 				
@@ -65,20 +63,30 @@ class Hasdone extends React.Component{
 	}
 	render(){
 		let resultlist=this.state.result||[]
-		
+		let donelist=[];	    
+		let totallength=0;
 		if(resultlist!==[]){
-			let donelist=resultlist.map((item,i)=>{
-	      //  console.log(item[0].value)
-					return <input type="text" 
-					className='animate-input modalsure'
-					disabled
-					key={item[0].value}
-					value={item[0].value}
-					style={{animation: "inputainmate  .2s linear 0s 1 normal forwards",
-					top:i*60+60+'px',left:300+'px'
-					}} />
-
-				})
+		
+			resultlist.map((item,i)=>{
+				    totallength+=item.length
+					donelist=donelist.concat(item.map((item2)=>{
+						return <input type="text" 
+						className='animate-input modalsure'
+						disabled
+						key={item2.value}
+						value={item2.value}
+						style={{animation: "inputainmate  .2s linear 0s 1 normal forwards",
+						left:300+'px'
+					}} />}))
+					
+					}) 
+					donelist.map((item,i)=>{
+						item.props.style.top=i*60+60+'px'
+					})
+					if(donelist.length>10){
+						donelist=donelist.slice(0, 10)
+					}
+				}
 			
 		
 			return <div>{donelist}</div>
@@ -87,7 +95,7 @@ class Hasdone extends React.Component{
 		}
 		
 
-}
+
 class Waitdone extends React.Component{
 	constructor(props){
 		super(props)
@@ -108,7 +116,6 @@ class Waitdone extends React.Component{
 		}).then(function(){
 			let listresult=result.map((itemresult)=>{
 				let arr=null;
-				// console.log(itemresult)
 			  arr=itemresult.attributes.todolist.uniqustate.filter((items)=>{
 					return !items.isdone
 				})
@@ -121,33 +128,34 @@ class Waitdone extends React.Component{
 		})
 	}
 	render(){
-			let resultlist=this.state.result||[]
-			var arr=null
-			let donelist=resultlist.map((item,i)=>{
-				if(item.length>0){
-					 arr=item.map((item,i)=>{	
-						 console.log(item)
-						let val=item.projectname +'下的 '+'--'+item.value+'--'+' 等待完成💤' 					
+		let resultlist=this.state.result||[]
+		let donelist=[];	    
+		let totallength=0;
+		if(resultlist!==[]){
+		
+			resultlist.map((item,i)=>{
+				    totallength+=item.length
+					donelist=donelist.concat(item.map((item2)=>{
 						return <input type="text" 
 						className='animate-input'
 						disabled
-						key={item.value}
-						value={val}
+						key={item2.value}
+						value={item2.value}
 						style={{animation: "inputainmate  .2s linear 0s 1 normal forwards",
-						top:i*60+60+'px',left:300+'px'
-						}} />
+						left:300+'px'
+					}} />}))
+					
+					}) 
+					donelist.map((item,i)=>{
+						item.props.style.top=i*60+60+'px'
 					})
-					return arr	
+					if(donelist.length>10){
+						donelist=donelist.slice(0, 10)
+					}
 				}
-	
-				})
-				
-		  if(arr){
-			return <div>{arr}</div>
 			
-			}else{
-				return <div></div>
-			}
+		
+			return <div>{donelist}</div>
 		
 		
 		}
@@ -251,7 +259,7 @@ class Sidemenu extends React.Component{
 				<Route className="notifications" path="/App/notify" exact component={Notifications} />
 				<Route className="hasdone" username={this.props.username} path="/App/hasdone" 
 				render={() =><Hasdone username={this.props.username}/>}/>
-				<Route className="waitdone" username={this.props.username} path="/App/waitdone" 
+				<Route className="waitdone"  username={this.props.username} path="/App/waitdone" 
 				render={() =><Waitdone username={this.props.username}/>}/>
 			</main>		
 					</div>	

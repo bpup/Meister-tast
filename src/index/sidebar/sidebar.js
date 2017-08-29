@@ -9,8 +9,8 @@ import {createStore} from 'redux'
 
 // let store=createStore()
 const content=<section>
-<Button fluid className='reset-button'>未完成的项目</Button>
-<Button fluid className='reset-button'>已完成的项目</Button>
+<Button fluid className='reset-button' primary>未完成的项目</Button>
+<Button fluid className='reset-button' primary>已完成的项目</Button>
 </section>
  let randomIcon=function (){
 	const iceicon=[]
@@ -186,6 +186,9 @@ const content=<section>
 	 postMessage=(e)=>{
 		 this.setState({busMesage:e.target.value})}
 	 posName=(e)=>{
+		 if(!e.target.value||e.target.value==''||e.target.value==' '){
+			 e.target.style.border='1px solid red'
+		 }
 		 this.setState({busName:e.target.value})}
 	 sendMessage=()=>{
 		 this.props.receiveMessage(this.state.busName,this.state.busMesage)
